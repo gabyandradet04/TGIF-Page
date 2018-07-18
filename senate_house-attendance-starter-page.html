@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Senate Attendance</title>
+        <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Kalam" rel="stylesheet">
+    </head>
+    
+    <body id="senate_att">
+        <div class="container" id="app">
+            <nav>
+                <div class="row" >
+                    <div class="col-md-4">
+                        <a href="#" class="nombreLogo">  <img class="img-responsive lupa" src="imagenes/lupa.jpg" alt="Logo"> TGIF</a>
+                    </div>
+                    <div class="col-md-4"> </div>
+                    <div class="col-md-4">
+                        <a href="mailto:info@tgif.net?subject=Contac%20Us" class="text-rigth">  <img class="img-responsive lupa" src="imagenes/envelop.jpg" alt="Logo"> info@tgif.net </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul class="col-md-12 col-sm-12 col-xs-12 nav navbar-nav nav-left navi">
+                        <li><a href="home-starter-page.html">Home</a></li>
+                        <li >
+                            <a  class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="senate-starter-page.html">Senate</a></li>
+                                <li><a href="house-starter-page.html">House</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" >Attendance</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="senate_house-attendance-starter-page.html">Senate</a></li>
+                                <li><a href="house-attendance-starter-page.html">House</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Party Loyalty</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="senate_house-party-loyalty-starter-page.html">Senate</a></li>
+                                <li><a href="house-party-loyalty-starter-page.html">House</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <header>
+                <div>
+                </div>
+            </header>
+            <!--Table container-->
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Attendance</h2>
+                    <p>The Constitution specifies that a majority of members constitutes a quorum to do business in each house. Representatives and senators rarely force the presence of a quorum by demanding quorum calls; thus, in most cases, debates continue even if a majority is not present.</p>
+                    <p>The Senate uses roll-call votes; a clerk calls out the names of all the senators, each senator stating "aye" or "no" when his or her name is announced. The House reserves roll-call votes for the most formal matters, as a roll-call of all 435 representatives takes quite some time; normally, members vote by electronic device. In the case of a tie, the motion in question fails. In the Senate, the Vice President may (if present) cast the tiebreaking vote.</p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Senate at a glance</h2>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Party</th>
+                                <th>Number of Reps</th>
+                                <th>% Voted with Prty</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Republican</td>
+                                <td id="Rep">{{stat.glance.num_R}}</td>
+                                <td id="porcRep">{{stat.glance.pct_R}} %</td>
+                            </tr>
+                            <tr>
+                                <td>Democrat</td>
+                                <td id="Dem">{{stat.glance.num_R}}</td>
+                                <td id="porcDem">{{stat.glance.pct_D}} %</td>
+                            </tr>
+                            <tr>
+                                <td>Independent</td>
+                                <td id="Ind">{{stat.glance.num_I}}</td>
+                                <td id="porcInd">{{stat.glance.pct_I}} %</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td id="tot">{{stat.glance.num_T}}</td>
+                                <td id="porcTot">{{stat.glance.pct_T}} %</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                </div> <!--Fin row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h2>Least Engaged (Bottom 10% Attendance)</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Number of Missed Votes</th>
+                                    <th>% Missed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="least_att">
+                                <tr v-for="s in stat.l_eng">
+                                <td><a href:s.url>{{s.first_name}} {{s.middle_name}} {{s.last_name}}</a></td>
+                              <td>{{s.num_missed_votes}}</td>
+                              <td>{{s.missed_pct_votes}} %</td>
+                              </tr>  
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <h2>Most Engaged (Top 10% Attendance)</h2>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Number of Missed Votes</th>
+                                    <th>% Missed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="most_att">
+                                <tr v-for="s in stat.M_eng">
+                                <td><a href:s.url>{{s.first_name}} {{s.middle_name}} {{s.last_name}}</a></td>
+                              <td>{{s.num_missed_votes}}</td>
+                              <td>{{s.missed_pct_votes}} %</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+        <script src="JQuery/jquery-3.2.1.min.js"></script>
+        <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+        <script src = "https://unpkg.com/vue/dist/vue.js"> </script>
+        <!--<script type="text/javascript" src="pro -congress-113-2-senate.js" ></script>-->
+        <!--<script src="pruebas.js" type="text/javascript" charset="utf-8" async defer></script>-->
+        <script src="main_att.js" type="text/javascript" charset="utf-8" async defer></script>
+    </body>
+</html>

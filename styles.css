@@ -1,0 +1,28 @@
+body{
+
+	font-family: 'Kalam', cursive;
+}
+.lupa{
+	width: 80px;
+	height: 80px;
+	display: inline-block;
+}
+.navi{
+	 border:solid 2px ;
+}
+.foo{
+	border:solid 2px ;
+	margin: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.est{
+
+	width: 80%;
+	height: 80%;
+	display: inline-block;
+	 padding-top: 50px;
+	 padding-left: 50px;
+
+}
